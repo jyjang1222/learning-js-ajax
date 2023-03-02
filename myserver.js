@@ -26,9 +26,9 @@ app.use(express.static('./img'));
 require('./router/ajaxController')(app);
 require("./router/apiController")(app);
 require("./router/boardController")(app);
-// require("./router/file1Controller")(app);
-// require("./router/file2Controller")(app);
-// require("./router/storeController")(app);
+require("./router/file1Controller")(app);
+require("./router/file2Controller")(app);
+require("./router/storeController")(app);
 
 // ejs
 app.get('/', (req, res) => {
