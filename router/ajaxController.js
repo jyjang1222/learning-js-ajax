@@ -6,7 +6,7 @@ const conn_info = {
 	port : 3306,
 	user : "root",
 	password : "root",
-	database : "_node_db_test",
+	database : "_posttest",
     multipleStatements: true    // 여러 쿼리를 ;를 기준으로 한번에 보낼 수 있게 해줌.
 };
 
@@ -27,12 +27,42 @@ module.exports = (app) => {
      
         var conn = mysql.createConnection(conn_info);
 
-        var sql = "INSERT INTO posttest  (test_id , test_pw) VALUES(?, ?)";
+        var sql = " INSERT INTO posttest (test_id , test_pw) VALUES(?, ?) ";
         var inputData = [id, pw];
         conn.query(sql, inputData, function(error){
             console.log("error :" , error);
             conn.end();
             res.redirect("/");
+        });
+    });
+
+    app.get('/joinCheckForm', (req, res) => {
+        res.render('ajax/joinCheckForm.ejs');
+    });
+
+    app.get('/ajaxForm', (req, res) => {
+        res.render('ajax/ajaxForm.ejs');
+    });
+
+    app.post("/checkIdPro", urlencodedParser, function(req, res){ 
+        var testId = req.body.testId;
+
+        var conn = mysql.createConnection(conn_info);
+        var sql = "SELECT COUNT(*) FROM posttest WHERE test_id=?";
+        var inputData = [testId];
+        conn.query(sql, inputData, function(error, rows){
+            console.log("error : " , error);
+            var json = JSON.stringify(rows);
+            var data = JSON.parse(json);
+            var count = data[0]["COUNT(*)"];
+
+            conn.end();
+
+            var responseData = {
+                "count" : count
+            };
+           // responseData.count = count;
+            res.json(responseData); // 원래 호출한곳으로 돌아간다. 
         });
     });
 }
