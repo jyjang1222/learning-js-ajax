@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+</head>
+<body>
+
+    <!-- api 등록 방법 -->
+    <!-- https://momk.notion.site/API-4bba91d3895f4468b687effbdb2d0966 -->
+
+    <!-- https://apis.map.kakao.com/web/guide/ -->
+	<div id="map" style="width:500px;height:400px;"></div>
+
+    <!-- 여기를 본인 키로 한다. -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e2a544814c699b3cab9a800046488bf&libraries=services"></script>
+	
+    
+    <script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+</body>
+</html>

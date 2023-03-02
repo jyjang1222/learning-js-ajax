@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <!-- jquery cdn -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        function getCheckDoubleId(){
+            var testId = document.getElementById("testId");
+
+            jQuery.ajax({
+                type : "post" , 
+                url : "checkIdPro" , 
+                data : {
+                    testId : testId.value
+                },
+                success : function(data){
+                    var count = data.count;
+                    if(count == 0){
+                        alert("사용할 수 있는 아이디입니다.");
+                        
+                    }else{
+                        alert("중복된 아이디입니다.");
+                        testId.value = "";
+                        testId.focus();
+                    }
+                }, 
+                error : function(data){
+                    alert("error");
+                }
+            });      
+        }
+        
+
+    </script>
+
+</head>
+<body>
+    <div align="center">
+        <br><br>
+        <h2>회원가입</h2>
+    
+        <table border="1">
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" id="testId" name="testId" >
+                    <input type="button" id="checkDoubleId" value="아이디 중복검사" 
+                    placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" onclick="getCheckDoubleId()">
+                    <div id="msgId"></div>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <a href="/">돌아가기</a>
+    </div>
+</body>
+</html>

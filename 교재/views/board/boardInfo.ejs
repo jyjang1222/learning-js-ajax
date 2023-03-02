@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <h2>게시글정보</h2>
+            <table border="1">
+                <tr align="right">
+                    <td colspan="2">
+                        <button onclick="location.href='boardReCommentForm?board_number=<%=board.board_number%>'">댓글달기</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>번호</td>
+                    <td><%=board["board_number"]%></td>
+                </tr>
+                <tr>
+                    <td>제목</td>
+                    <td><%=board["board_title"]%></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea cols="50" rows="10" name="info">
+                        <%=board["board_info"]%>
+                    </textarea></td>
+                </tr>
+                <tr>
+                    <td>글쓴이</td>
+                    <td><%=board["board_writer"]%></td>
+                </tr>
+                <tr>
+                    <td>조회</td>
+                    <td><%=board["board_count"]%></td>
+                </tr>
+                <tr>
+                    <td>날짜</td>
+                    <td><%=board["board_date"]%></td>
+                </tr>
+
+            </table>
+
+            <br><br>
+            <a href="/boardList">리스트로 돌아가기</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getOnChangeInputId(){
+            var memberId = document.getElementById("memberId");
+            var msgId = document.getElementById("msgId");
+            var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{6,20}$/); // 영어 숫자 조합 6~20글자 
+            if(userIdCheck.test(memberId.value)){
+                msgId.innerHTML = "";         
+                return true;
+
+            }else{          
+                msgId.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>6자리 이상의 영문 혹은 숫자를 조합</span>";
+                memberId.value = "";
+                memberId.focus();
+                return false;
+            }
+        }
+
+        function getOnChangeInputPw(){
+            var passwdCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+            var memberPw = document.getElementById("memberPw");
+            var msgPw = document.getElementById("msgPw");
+            if(passwdCheck.test(memberPw.value)){
+                msgPw.innerHTML = "";
+                return false;        
+            }else{
+                msgPw.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자 조합</span>";
+                memberPw.value = "";
+                memberPw.focus();
+                return true;
+            }
+        }
+        function getOnChangeInputPwCheck(){
+            var memberPw = document.getElementById("memberPw");
+            var memberPwCheck = document.getElementById("memberPwCheck");
+            var msgPwCheck = document.getElementById("msgPwCheck");
+            if(memberPw.value == memberPwCheck.value){
+                msgPwCheck.innerHTML = "";
+                return false;        
+            }else{
+                msgPwCheck.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>동일한 비밀번호를 입력해주세요.</span>";
+                memberPwCheck.value = "";
+                memberPwCheck.focus();
+                return true;
+            }
+        }
+
+
+
+        function getOnChangeInputName(){
+            var nameCheck = RegExp(/^[가-힣]{2,6}$/);
+
+            var memberName = document.getElementById("memberName");
+            var msgName = document.getElementById("msgName");
+            if(nameCheck.test(memberName.value)){
+                msgName.innerHTML = "";
+                return false;        
+            }else{
+                msgName.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>2~6글자의 한글만 입력</span>";
+                memberName.value = "";
+                memberName.focus();
+                return true;
+            }
+        }
+
+        function getOnChangeInputPhone2(){
+            var phoneNumberCheck = RegExp(/^01[0179][0-9]{7,8}$/);
+            var memberPhone1 = document.getElementById("memberPhone1");
+            var memberPhone2 = document.getElementById("memberPhone2");
+            var phone = memberPhone1.value + memberPhone2.value;
+            var msgPhone = document.getElementById("msgPhone");
+            if(phoneNumberCheck.test(phone)){
+                msgPhone.innerHTML = "";
+                return false;        
+            }else{
+                msgPhone.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>전화번호 형식에 맞게 입력하세요.</span>";
+                memberPhone1.value = "010";
+                memberPhone2.value = "";
+                memberPhone2.focus();
+                return true;
+            }           
+        }
+
+        function getOnChangeInputEmail(){
+            var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+            var memberEmail = document.getElementById("memberEmail");
+
+            var msgEmail = document.getElementById("msgEmail");
+            if(emailCheck.test(memberEmail.value)){
+                msgEmail.innerHTML = "";
+                return false;        
+            }else{
+                msgEmail.innerHTML = "<span style='width: 480px; color: #B3130B; font-size: 12px;'>이메일 형식에 맞게 입력하세요.</span>";
+                memberEmail.value = "";
+                memberEmail.focus();
+                return true;
+            }          
+        }
+
+
+    </script>
+</head>
+<body>
+    <div align="center">
+        <h1>각종 폼 예외처리 정규식 </h1>
+        <table border="1">
+            <tr>
+                <td>아이디 </td>
+                <td >  
+                    <input type="text" id="memberId" name="memberId"  onchange="getOnChangeInputId()">
+                    <input type="button" id="checkDoubleId" value="아이디 중복검사" >
+                    <div id="msgId"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>비밀번호 </td>
+                <td>
+                    <input type="password" id="memberPw" name="memberPw" placeholder="비밀번호를 입력해주세요" onchange="getOnChangeInputPw()">
+                    <div id="msgPw"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호 재확인 </td>
+                <td>
+                    <input type="password" id="memberPwCheck" name="memberPwCheck" placeholder="비밀번호를 한번 더 입력해주세요"  onchange="getOnChangeInputPwCheck()">
+                    <div id="msgPwCheck"></div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>이름</td>
+                <td>
+                    <input type="text" id="memberName" name="memberName" onchange="getOnChangeInputName()">
+                    <div id="msgName"></div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>전화번호</td>
+                <td>
+                    <select id="memberPhone1" name="memberPhone1">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="017">017</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                    </select>
+                    <input type="text" id="memberPhone2" name="memberPhone2" onchange="getOnChangeInputPhone2()">
+                    <div id="msgPhone"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="text" id="memberEmail" name="memberEmail" onchange="getOnChangeInputEmail()">
+                    <div id="msgEmail"></div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <a href="/">돌아가기</a>
+    </div>
+
+
+</body>
+</html>

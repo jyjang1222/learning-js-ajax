@@ -1,0 +1,28 @@
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+CREATE DATABASE _node_book;
+USE _node_book;
+
+
+drop table book;
+
+# 도서 테이블
+CREATE TABLE book(
+	bookNo INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    bookCategory VARCHAR(20),
+    bookSubCategory VARCHAR(20),
+    bookName VARCHAR(100),
+    bookPrice INT,
+    bookStock INT,
+    bookImage VARCHAR(20),
+    bookInfo VARCHAR(100),
+    bookContentImage VARCHAR(50),
+    bookDiscount INT,
+    bookSold INT
+);
+
+INSERT INTO book VALUES(1  , '컴퓨터공학' , '머신러닝/딥러닝', '혼자 공부하는 머신러닝+딥러닝' 						  , 26000, 10 , '1.jpg' , '박해선 저 | 한빛미디어 | 2020년 12월 21일'														 , 'contentImg01.jpg' , 10, 78024);
+INSERT INTO book VALUES(2  , '컴퓨터공학' , '머신러닝/딥러닝', 'Must Have 머신러닝·딥러닝 문제해결 전략' 				  , 38000, 9  , '2.jpg' , '신백균 저 | 골든래빗 | 2022년 04월 13일'														 , 'contentImg02.jpg' , 10, 3288);
+INSERT INTO book VALUES(3  , '컴퓨터공학' , '머신러닝/딥러닝', '파이썬 머신러닝 완벽 가이드' 							  , 40000, 3  , '3.jpg' , '권철민 저 | 위키북스 | 2022년 04월 21일'														 , 'contentImg01.jpg' , 10, 1302);
+select * from book;

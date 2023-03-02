@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <h2>관리자 페이지</h2>
+        <table border="1">
+                <tr align="right">
+                   <td colspan="11"><button onclick="location.href='bookAddForm'">책 등록</button></td> 
+                </tr>
+                <tr align="center">
+                    <td width="50px">번호</td>
+                    <td width="150px">카테고리1</td>
+                    <td width="150px">카테고리2</td>
+                    <td width="250px">이름</td>
+                    <td width="50px">가격</td>
+                    <td width="50px">재고</td>
+                    <td width="150px">이미지</td>
+                    <td width="250px">내용</td>
+                    <td width="150px">컨텐트이미지</td>
+                    <td width="50px">할인률</td>
+                    <td width="50px">판매</td>
+                </tr>
+               
+                    <%for(var i = 0; i < bookList.length; i++){%>
+                        <tr>
+                            <% book = bookList[i]; %>
+                            <td><%=book.bookNo%></td>
+                            <td><%=book.bookCategory%></td>
+                            <td><%=book.bookSubCategory%></td>
+                            <td><%=book.bookName%></td>
+                            <td><%=book.bookPrice%></td>
+                            <td><%=book.bookStock%></td>
+                            <td><img src='<%=book.bookImage%>' width="150px"></td>
+                            <td><%=book.bookInfo%></td>
+                            <td><%=book.bookContentImage%></td>
+                            <td><%=book.bookDiscount%></td>
+                            <td><%=book.bookSold%></td>
+                        </tr>
+                    <%}%>
+
+
+        </table>
+
+        <br><br>
+        <a href="/">돌아가기</a>
+       
+    </div>
+</body>
+</html>

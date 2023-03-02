@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <h2>게시글 리스트</h2>
+        <table border="1">
+                <tr align="right">
+                   <td colspan="5"><button onclick="location.href='boardWriteForm'">글쓰기</button></td> 
+                </tr>
+                <tr align="center">
+                    <td width="50px">번호</td>
+                    <td width="450px">제목</td>
+                    <td width="150px">글쓴이</td>
+                    <td width="50px">조회</td>
+                    <td width="150px">날짜</td>
+                    <td width="150px">삭제</td>
+                </tr>
+                <%for(var i = 0; i < boardList.length; i++){ %>
+                    <tr align="center">
+                        <td ><%=boardList[i]["board_number"]%></td>
+                        <%if(boardList[i].board_delete == 0){%>
+                            <td colspan="5">--------------------[ 삭제된 글입니다 ]-------------------------</td>
+                        <%}else{%>
+
+                            <td align="left">                           
+
+                                <%for(var j = 0; j < boardList[i]["board_restep"] - 1; j++) {%>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                <%}%>
+                                <%if(boardList[i]["board_restep"] > 1){%>
+                                    <a href="boardInfo?board_number=<%=boardList[i]["board_number"]%>">[re] <%=boardList[i]["board_title"]%></a>
+                                <%}else{%>
+                                    <a href="boardInfo?board_number=<%=boardList[i]["board_number"]%>"><%=boardList[i]["board_title"]%></a>
+                                <%}%>
+                            </td>
+                                        
+                            <td><%=boardList[i]["board_writer"]%></td>
+                            <td><%=boardList[i]["board_count"]%></td>
+                            <td><%=boardList[i]["board_date"]%></td>
+                            <td><button onclick="location.href='boardDelete?board_number=<%= boardList[i].board_number%>'">삭제</button></td>
+                        <%}%>
+                    </tr>
+                <%}%>
+
+        </table>
+
+        <br><br>
+        <a href="/">돌아가기</a>
+       
+    </div>
+</body>
+</html>

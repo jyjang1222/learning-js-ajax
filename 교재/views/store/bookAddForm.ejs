@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+
+     
+        <!--  enctype="multipart/form-data" 을 추가한다. -->
+        <form action="/bookAddPro" method="post" enctype="multipart/form-data" >
+            <table border="1">
+    
+                <tr align="center">
+                    <td width="150px">카테고리1</td> <td><input type="text" name="bookCategory"></td>
+                </tr>
+                <tr>
+                    <td width="150px">카테고리2</td> <td><input type="text"  name="bookSubCategory"></td>
+                </tr>
+                <tr> <td width="250px">이름</td> <td><input type="text"  name="bookName"></td> </tr>
+                <tr> <td width="50px">가격</td> <td><input type="text" name="bookPrice"></td></tr>
+                <tr> <td width="50px">재고</td> <td><input type="text" name="bookStock"></td></tr>
+                <tr> <td width="150px">이미지</td>  <td> <input type="file" name="imageFile" multiple> </td></tr>
+                <tr> <td width="250px">내용</td> <td><input type="text" name="bookInfo"></td></tr>
+                <tr> <td width="150px">컨텐트이미지</td> <td><input type="file" name="imageFile" multiple> </td> </tr>
+                <tr> <td width="50px">할인률</td> <td><input type="text" name="bookDiscount"></td></tr>
+                <tr> <td width="50px">판매</td> <td><input type="text" name="bookSold"></td></tr>
+                <tr> <td><input type="submit" value="submit"> </td> </tr>
+               
+            </table>
+        </form>
+
+        <br><br>
+        <a href="/">돌아가기</a>
+    </div>
+
+
+   
+    
+</body>
+</html>
