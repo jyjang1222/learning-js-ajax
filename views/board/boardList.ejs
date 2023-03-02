@@ -42,10 +42,10 @@
                     <%if(boardList[i]["board_restep"]> 1){%>
                       <a href="boardInfo?board_number=<%=boardList[i]["board_number"]%>">[re]
                         <%=boardList[i]["board_title"]%></a>
-                      <%}else{%>
-                        <a href="boardInfo?board_number=<%=boardList[i]["board_number"]%>">
-                          <%=boardList[i]["board_title"]%></a>
-                        <%}%>
+                    <%}else{%>
+                      <a href="boardInfo?board_number=<%=boardList[i]["board_number"]%>">
+                        <%=boardList[i]["board_title"]%></a>
+                    <%}%>
               </td>
 
               <td>

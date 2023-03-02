@@ -1,0 +1,58 @@
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+CREATE DATABASE _node_board;
+USE _node_board;
+
+
+drop table board;
+CREATE TABLE board(
+	board_number INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    board_title VARCHAR(20),
+    board_info VARCHAR(20),
+    board_writer VARCHAR(20),
+    board_count INT,
+	board_date VARCHAR(20),
+	board_ref INT,
+	board_restep INT,
+    board_relevel INT,
+    board_delete INT -- 0삭제
+);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital1" , "info1" , "writer1" , 0 , now() , 1, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital2" , "info2" , "writer2" , 0 , now() , 2, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital3" , "info3" , "writer3" , 0 , now() , 3, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital4" , "info4" , "writer4" , 0 , now() , 4, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital5" , "info5" , "writer5" , 0 , now() , 5, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital6" , "info6" , "writer6" , 0 , now() , 6, 1, 1 , 1);
+
+insert into board (board_title , board_info , board_writer , board_count , board_date , board_ref , board_restep , board_relevel , board_delete) 
+values ("tital7" , "info7" , "writer7" , 0 , now() , 7, 1, 1 , 1);
+
+delete from board where board_number = 11;
+
+select * from board;
+
+
+SELECT * FROM board ORDER BY board_ref DESC, board_relevel ASC
+LIMIT 0, 10;
+
+SELECT MAX(board_ref) from board;
+
+UPDATE board SET  board_count = board_count + 1 where board_number = 1;
+
+
+
+
+
+
