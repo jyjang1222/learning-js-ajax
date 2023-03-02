@@ -1,7 +1,7 @@
 // 서버 세팅 
 const express = require("express"); // express 변수생성
 const app = express();              // app 에 express변수 저장
-const port = 3503;				  // 포트번호 생성 
+const port = 3502;				  // 포트번호 생성 
 const server = app.listen(port, function(){
 	console.log("서버가 가동되었습니다" + port);
 });
@@ -24,6 +24,11 @@ app.use(express.static('./img'));
 
 // 라우터
 require('./router/ajaxController')(app);
+require("./router/apiController")(app);
+// require("./router/boardController")(app);
+// require("./router/file1Controller")(app);
+// require("./router/file2Controller")(app);
+// require("./router/storeController")(app);
 
 // ejs
 app.get('/', (req, res) => {
